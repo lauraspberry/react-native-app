@@ -37,7 +37,7 @@ const SignUpScreen = ({ navigation }) => {
     }
 
     async function handleSubmit() {
-        // console.log("hi");
+        console.log("hi");
         if(validateForm()) {
             try {
                 await Auth.signUp({
@@ -54,7 +54,7 @@ const SignUpScreen = ({ navigation }) => {
                 }
                 );
             } catch (e) {
-
+                console.log("handle submit error");
             }
         }
     }
