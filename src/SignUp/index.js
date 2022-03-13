@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
-// import { Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 
 const styles = StyleSheet.create({ 
     container: {
@@ -16,12 +16,17 @@ const styles = StyleSheet.create({
     }
 });
 
-const SignUp = ({ navigation }) => {
+const SignUpScreen = ({ navigation }) => {
     
     // create our states 
     const [email, onChangeEmail] = React.useState("");
     const [password, onChangePassword] = React.useState("");
     const [confirmPass, onChangeConfirm] = React.useState("");
+
+    const fields = {
+        email: "",
+        password: ""
+    }
 
     function validateForm() {
         return (
@@ -31,9 +36,28 @@ const SignUp = ({ navigation }) => {
         )
     }
 
-    // async function handleSubmit() {
-    //     if(validateForm())
-    // }
+    async function handleSubmit() {
+        // console.log("hi");
+        if(validateForm()) {
+            try {
+                await Auth.signUp({
+                    username: email,
+                    password: password,
+                    attributes: {
+                        email: email
+                    }
+                });
+                fields.email = email;
+                fields.password = password;
+                navigation.navigate('Confirm', {
+                    paramKey: fields,
+                }
+                );
+            } catch (e) {
+
+            }
+        }
+    }
 
     // instead of view, use SafeAreaView ? 
     return (  
@@ -61,11 +85,11 @@ const SignUp = ({ navigation }) => {
         />
         <Button
             title = "Sign Up"
-            onPress = {() => navigation.navigate('Home')}
-            // onPress = {handleSubmit}
+            // onPress = {() => navigation.navigate('Home')}
+            onPress = {handleSubmit}
         />
     </View>
     );
 };
 
-export default SignUp;
+export default SignUpScreen;
