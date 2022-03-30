@@ -38,7 +38,7 @@ const SignUpScreen = ({ navigation }) => {
 
     async function handleSubmit() {
         console.log("hi");
-        if(validateForm()) {
+        if(validateForm) {
             try {
                 await Auth.signUp({
                     username: email,

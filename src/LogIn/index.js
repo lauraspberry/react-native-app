@@ -16,7 +16,19 @@ const styles = StyleSheet.create({
     }
 });
 
-const LogIn = ({ navigation }) => {
+const LogIn = ({ LogIn, navigation }) => {
+
+    const [email, onChangeEmail] = React.useState("");
+    const [password, onChangePass] = React.useState("");
+
+    async function handleSubmit() {    
+        try {
+          await Auth.signIn(email, password);
+          LogIn(true);
+        } catch (e) {
+        }
+    }
+
     return ( 
     <View style={styles.container}>
         <Text>Log In Screen</Text>
@@ -24,19 +36,28 @@ const LogIn = ({ navigation }) => {
             style={styles.input}
             // onChangeText={onChangeNumber}
             // value={number}
-            placeholder="type username here"
-            keyboardType="numeric"
+            // placeholder="type username here"
+            // keyboardType="numeric"
+            onChangeText = {onChangeEmail}
+            value = {email}
+            placeholder = "Enter your email."
+            keyboardType = "email-address"
         />
         <TextInput
             style={styles.input}
             // onChangeText={onChangeNumber}
             // value={number}
-            placeholder="type password here"
-            keyboardType="numeric"
+            // placeholder="type password here"
+            // keyboardType="numeric"
+            onChangeText = {onChangePass}
+            value = {password}
+            secureTextEntry  //blurs ur password input
+            placeholder = "Enter your password."
         />
         <Button
             title = "go home"
-            onPress = {() => navigation.navigate('Home')}
+            // onPress = {() => navigation.navigate('Home')}
+            onPress = {handleSubmit}
         />
     </View>
     );
