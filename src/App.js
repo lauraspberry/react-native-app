@@ -6,6 +6,8 @@ import HomeScreen from './Home/index.js';
 import LogInScreen from './LogIn/index.js';
 import SignUpScreen from './SignUp/index.js';
 import ConfirmScreen from './Confirm/index.js';
+// import Friend from './screens/Friends.js';
+
 // import Amplify from 'aws-amplify';
 // import awsConfig from './src/aws-exports';
 
@@ -23,7 +25,11 @@ const App = () => {
     <NavigationContainer> 
         <RootStack.Navigator>
             {isAuthenticated ? (
-                    <RootStack.Screen name="Home" component={HomeScreen} />
+                    <RootStack.Screen name = "Home"> 
+                    {(props) => (
+                        <HomeScreen {...props} LogIn = {setIsAuthenticated} />
+                    )}
+                    </RootStack.Screen>
                 ) : (
                     <>
                     <RootStack.Screen name="Landing" component={LandingScreen} />
