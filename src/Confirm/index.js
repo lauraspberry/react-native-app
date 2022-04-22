@@ -48,7 +48,7 @@ const ConfirmScreen = ({ LogIn, route }) => {
 
             <Button
                 title = "Verify and sign in"
-                onPess = {handleConfirmSubmit}
+                onPress = {handleConfirmSubmit}
             />
         </View>
     )

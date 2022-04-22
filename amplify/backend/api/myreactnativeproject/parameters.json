@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "myreactnativeproject",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authmyreactnativeproject001f0e9b",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

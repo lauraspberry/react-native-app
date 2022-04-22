@@ -1,0 +1,25 @@
+type Self
+  @model
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [create, update, read, delete] }
+    ]
+  )
+  {
+    id: ID!
+    name: String! 
+    posts: [Friend] @hasMany
+  }
+
+type Friend
+  @model
+  @auth(
+    rules: [
+      { allow: private, provider: userPools, operations: [create, update, read, delete] }
+    ]
+  )
+  {
+    id: ID!
+    username: String!
+    nickname: String
+  }

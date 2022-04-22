@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "myreactnativeproject",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/studypei/Files/Code/myReactNativeProject/amplify/backend/api/myreactnativeproject/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authmyreactnativeproject001f0e9b"
+    }
+  }
+}
